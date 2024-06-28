@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    
+    <div class="backColor"><!--PARTE COLORIDA DO FUNDO-->
+    </div><!--PARTE COLORIDA DO FUNDO-->
+    
+    <div class="backColorWhite"><!--PARTE DO FUNDO BRANCO DO SITE-->
+
+      <form style="display: flex;" class="formulario" action=""><!--TODO O FORM DA PÁGINA-->
+        
+        <div class="inputName"><!--PARTE DO NOME DO CARTÃO-->
+
+          <label for="inputNome">CARDHOLDER NAME</label>
+          <input onclick="clearMsgErro(1)" onblur="checkInputs(1)" type="text" name="nome" maxlength="20" id="inputNome" placeholder="e.g. Jane Appleseed" class="inputTag">
+
+          <div class="MSGERRO" id="msgErro1">
+            <!--MENSAGEM DE ERRO APARECERÁ AQUI-->
+          </div>
+
+        </div><!--PARTE DO NOME DO CARTÃO-->
+
+        <div class="inputCodigo"><!--PARTE DO NÚMERO DO CARTÃO-->
+
+          <label for="inputCardNumber">CARD NUMBER</label>
+          <input onclick="clearMsgErro(2)" onblur="checkInputs(2)" type="text" name="CardNumber" maxlength="19" id="inputCardNumber" placeholder="e.g. 1234 5678 9123 0000" class="inputTag">
+
+            <div class="MSGERRO" id="msgErro2">
+                <!--MENSAGEM DE ERRO APARECERÁ AQUI-->
+            </div>
+
+        </div><!--PARTE DO NÚMERO DO CARTÃO-->
+          
+        <div><!--PARTE DA DATA DE EXPIRAÇÃO E DO CVV-->
+
+          <div class="labelDateCvc" style="margin-bottom: 5px; ">
+            <label for="date">EXP. DATE (MM/YY)</label>
+            <label for="CVC" style="margin-left: 15%;">CVC</label>
+          </div>
+  
+          <div class="cardDateCVC">
+            <div class="dateCard">
+              <input onclick="clearMsgErro(3)" onblur="checkInputs(3)" type="text" maxlength="2" placeholder="MM" id="inputMounth" class="inputTag">
+              <input onclick="clearMsgErroEsp1()" onblur="checkInputs(4)" type="text" maxlength="2" placeholder="YY" id="inputYear" class="inputTag">
+            </div>
+
+            <div class="cardCVC">
+              <input onclick="clearMsgErroEsp2()" onblur="checkInputs(5)" type="text" maxlength="3" placeholder="e.g. 123" id="inputCVV" class="inputTag">
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between;">
+            <div class="MSGERRO" id="msgErro3">
+                  <!--MENSAGEM DE ERRO APARECERÁ AQUI-->
+            </div>
+            <div style="margin-right: 28%;" class="MSGERRO" id="msgErro4">
+                  <!--MENSAGEM DE ERRO APARECERÁ AQUI-->
+            </div>
+          </div>
+        </div><!--PARTE DA DATA DE EXPIRAÇÃO E DO CVV-->
+            
+        <!--BUTÃO DE CONFIRMAÇÃO DO FORMULÁRIO-->
+        <input onclick="checkAllInputs(), verifyForm()" type="button" value="Confirm">
+
+      </form>
+
+      <div style="display: none; width: 450px; height: 500px;" id="aproved"><!--PARTE DA MENSAGEM DE CONFIRMAÇÃO DE ENVIO DE FORMULÁRIO-->
+        <div id="imgAproved">
+          <img src="images/icon-complete.svg" alt="">
+        </div>
+
+        <div style="margin-top: 25px;" id="msgThanks">
+          <span ><strong style="font-size: 35px; color: black; letter-spacing: 3px;">THANK YOU!</strong></span>
+        </div>
+
+        <div style="margin-top: 15px;" id="msgCardDetails">
+          <span style="color: gray; font-size: 20px;">We've added your card details</span>
+        </div>
+
+        <div style="width: 100%; margin-top: 30px;" id="continue">
+          <input onclick="reloadPage()"  type="button" value="Continue">
+        </div>
+      </div><!--PARTE DA MENSAGEM DE CONFIRMAÇÃO DE ENVIO DE FORMULÁRIO-->
+    </div><!--PARTE DO FUNDO BRANCO DO SITE-->
+    
+    <div class="backCardimg"><!--PARTE DE TRÁS DO CARTÃO-->
+      <span id="spanCVV" class="SpanCard">000</span>
+    </div><!--PARTE DE TRÁS DO CARTÃO-->
+
+    <div class="frontCardimg"><!--PARTE DA FRENTE DO CARTÃO-->
+      <div class="imginCard">
+        <img id="imgCard" src="images/card-logo.svg" alt="">
+      </div>
+
+      <div class="numberCard">
+        <span id="numberResult">0000 0000 0000 0000</span>
+      </div>
+
+      <div class="nameDate">
+        <span id="namePerson" class="nameDateSpan">JANE APPLESEED</span>
+        <span id="dateValid" class="nameDateSpan"><span style="font-size: 12px;" id="ResultMounth">00</span>/<span style="font-size: 12px;" id="ResultYear">00</span></span>
+      </div>
+    </div><!--PARTE DA FRENTE DO CARTÃO-->
+
+  </main>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/victoracad">Victor Eduardo</a>.
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
